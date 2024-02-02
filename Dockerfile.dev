@@ -61,6 +61,10 @@ ENV HOME /centauri
 WORKDIR $HOME
 
 COPY scripts/* /centauri/
+
+# install jq
+RUN apk add --no-cache jq
+
 # rest server
 EXPOSE 1317
 # tendermint p2p

@@ -10,5 +10,5 @@ services:
     command: sh testnode.sh
     ports:
       - 1317:1317 # rest
-      - 26656:26656 # p2p
-      - 26657:26657 # rpc
+      - 50000:26656 # p2p
+      - 50001:26657 # rpc

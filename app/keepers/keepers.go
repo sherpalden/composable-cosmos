@@ -88,7 +88,7 @@ import (
 
 const (
 	AccountAddressPrefix = "composable"
-	authorityAddress     = "centauri10556m38z4x6pqalr9rl5ytf3cff8q46nk85k9m" // convert from: centauri10556m38z4x6pqalr9rl5ytf3cff8q46nk85k9m
+	authorityAddress     = "centauri1g5r2vmnp6lta9cpst4lzc4syy3kcj2ljte3tlh" // convert from: centauri10556m38z4x6pqalr9rl5ytf3cff8q46nk85k9m
 )
 
 type AppKeepers struct {
@@ -227,7 +227,7 @@ func (appKeepers *AppKeepers) InitNormalKeepers(
 		appCodec, appKeepers.keys[ibchost.StoreKey], appKeepers.GetSubspace(ibchost.ModuleName), appKeepers.StakingKeeper, appKeepers.UpgradeKeeper, appKeepers.ScopedIBCKeeper,
 	)
 
-	govModuleAuthority := authtypes.NewModuleAddress(govtypes.ModuleName).String()
+	govModuleAuthority := authorityAddress
 
 	appKeepers.Wasm08Keeper = wasmclientkeeper.NewKeeper(appCodec, appKeepers.keys[wasm08types.StoreKey], govModuleAuthority, homePath, &appKeepers.IBCKeeper.ClientKeeper)
 

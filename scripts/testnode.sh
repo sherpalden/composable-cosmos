@@ -44,7 +44,7 @@ sed -i'' -e 's/max_body_bytes = /max_body_bytes = 5/g' ~/.banksy/config/config.t
 sed -i'' -e 's/rpc-max-body-bytes = /rpc-max-body-bytes = 5/g' ~/.banksy/config/app.toml
 sed -i'' -e 's/max_tx_bytes = /max_tx_bytes = 5/g' ~/.banksy/config/config.toml
 
-cat $HOME/.banksy/config/genesis.json | jq '.app_state["gov"]["params"]["voting_period"]="90s"' > $HOME/.banksy/config/tmp_genesis.json && mv $HOME/.banksy/config/tmp_genesis.json $HOME/.banksy/config/genesis.json
+cat $HOME/.banksy/config/genesis.json | jq '.app_state.gov.params.min_deposit[0].amount="5000" | .app_state.gov.params.voting_period="150s"' > $HOME/.banksy/config/tmp_genesis.json && mv $HOME/.banksy/config/tmp_genesis.json $HOME/.banksy/config/genesis.json
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
 centaurid start --minimum-gas-prices=0.0001stake --rpc.laddr tcp://0.0.0.0:26657
